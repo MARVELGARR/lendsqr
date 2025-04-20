@@ -5,13 +5,16 @@ import type React from "react"
 
 import styles from "./userDetailsContent.module.scss"
 import { useUserStore } from "../../store/userStore"
+import useLocalStorage from "../../hooks/useLocalStorage"
+import { UsersProp } from "../../hooks/getUsersDataHook"
 
 interface UserDetailsContentProps {
   userId: string
 }
 
 const UserDetailsContent: React.FC<UserDetailsContentProps> = ({ userId }) => {
-  const { users, activeTab } = useUserStore()
+  const {  activeTab } = useUserStore()
+  const [users] = useLocalStorage<UsersProp[]>("users", null)
   const user = users.find((u) => u.id === userId)
 
   if (!user) {

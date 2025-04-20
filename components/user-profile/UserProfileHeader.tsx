@@ -6,13 +6,16 @@ import { StarIcon, StarOutlineIcon, UserIcon } from "./icons"
 import styles from "./userProfileHeader.module.scss"
 import { useUserStore } from "../../store/userStore"
 import { tabsFont } from "../../styles/fonts"
+import useLocalStorage from "../../hooks/useLocalStorage"
+import { UsersProp } from "../../hooks/getUsersDataHook"
 
 interface UserProfileHeaderProps {
   userId: string
 }
 
 const UserProfileHeader: React.FC<UserProfileHeaderProps> = ({ userId }) => {
-  const { users, setActiveTab, activeTab } = useUserStore()
+  const {  setActiveTab, activeTab } = useUserStore()
+  const [users] = useLocalStorage<UsersProp[]>("users", null)
   const user = users.find((u) => u.id === userId)
 
   if (!user) {
