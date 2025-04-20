@@ -25,6 +25,7 @@ $breakpoint-xl: 1200px;
   
   left: 0;
   z-index: 10;
+  pointer-events: none;
   overflow-y: auto;
   scrollbar-width: none;
   transition: transform 0.3s ease;
@@ -226,11 +227,12 @@ $breakpoint-xl: 1200px;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 90;
   display: none;
-  
-  @media (max-width: $breakpoint-md) {
+
+  &.active {
     display: block;
   }
 }
+
 
 // Layout adjustments for when sidebar is open
 :global(body) {

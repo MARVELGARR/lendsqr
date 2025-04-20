@@ -21,7 +21,11 @@ export default function SidebarComponent() {
   return (
     <>
       {/* Mobile overlay */}
-      {!isOpen && <div className={styles.overlay} onClick={toggleSidebar} />}
+      {isOpen && (
+  <div  className={styles.overlay} onClick={toggleSidebar}></div>
+)}
+
+    
 
       {/* Mobile toggle button */}
       <button
@@ -80,7 +84,7 @@ export default function SidebarComponent() {
 
           {/* Logout */}
           <div className={styles.sidebarFooter}>
-            <Link href="/logout" className={styles.logoutButton}>
+            <Link href="/login" className={styles.logoutButton}>
               <div className={styles.menuIcon}>
                 <LogoutIcon />
               </div>

@@ -33,18 +33,25 @@ $breakpoint-xl: 1200px;
   padding: 0 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: end;
+  @media (min-width: $breakpoint-md) {
+    justify-content: space-between;
+  }
 }
 
 // Logo styles
 .logoContainer {
-  display: flex;
+  display: none; // Initially hidden on small screens
   align-items: center;
   
   img {
     max-width: 120px;
+  }
+  
+  @media (min-width: $breakpoint-md) {
+    display: flex; // Show container on medium screens and up
     
-    @media (min-width: $breakpoint-md) {
+    img {
       max-width: 170px;
     }
   }
@@ -153,6 +160,7 @@ $breakpoint-xl: 1200px;
 // Profile styles
 .profileContainer {
   position: relative;
+
 }
 
 .profileButton {

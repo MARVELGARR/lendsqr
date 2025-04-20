@@ -1,0 +1,168 @@
+// Variables
+$color-primary: #213f7d;
+$color-secondary: #39cdcc;
+$color-white: #ffffff;
+$color-gray-light: #f5f5f7;
+$color-gray: #e5e5e5;
+$color-text: #545f7d;
+$color-border: #e4e6ef;
+$color-star: #e9b200;
+
+// Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+.profileHeader {
+  background-color: $color-white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.profileInfo {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  gap: 30px;
+  flex-wrap: wrap;
+  
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.8rem;
+  }
+}
+
+.avatarSection {
+  flex-shrink: 0;
+}
+
+.avatar, .avatarPlaceholder {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: $color-gray-light;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  svg {
+    width: 40px;
+    height: 40px;
+    color: $color-primary;
+  }
+}
+
+.userInfo {
+  
+  min-width: 200px;
+}
+
+.userName {
+  font-size: 22px;
+  font-weight: 500;
+  color: $color-primary;
+  margin: 0 0 8px 0;
+}
+
+.userId {
+  font-size: 14px;
+  color: $color-text;
+  margin: 0;
+}
+
+.userTier {
+  padding: 0 30px;
+  border-left: 1px solid $color-gray;
+  border-right: 1px solid $color-gray;
+  
+  @media (max-width: $breakpoint-md) {
+    padding: 0;
+    border: none;
+    width: 100%;
+  }
+}
+
+.tierLabel {
+  font-size: 14px;
+  color: $color-text;
+  margin: 0 0 8px 0;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+  
+  svg {
+    width: 16px;
+    height: 16px;
+    
+    &:first-child path {
+      fill: $color-star;
+    }
+  }
+}
+
+.accountInfo {
+  min-width: 200px;
+  
+  @media (max-width: $breakpoint-md) {
+    width: 100%;
+  }
+}
+
+.accountBalance {
+  font-size: 22px;
+  font-weight: 500;
+  color: $color-primary;
+  margin: 0 0 8px 0;
+}
+
+.bankInfo {
+  font-size: 12px;
+  color: $color-text;
+  margin: 0;
+}
+
+.tabsContainer {
+  border-top: 1px solid $color-border;
+  overflow-x: auto;
+}
+
+.tabs {
+  display: flex;
+  min-width: max-content;
+}
+
+.tab {
+  padding: 15px 30px;
+  background: none;
+  border: none;
+  color: $color-text;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  
+  &:hover {
+    color: $color-secondary;
+  }
+  
+  &.activeTab {
+    color: $color-secondary;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $color-secondary;
+    }
+  }
+}

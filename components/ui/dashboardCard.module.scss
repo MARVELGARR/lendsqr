@@ -1,0 +1,159 @@
+// dashboardCard.module.scss
+
+// Define breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+
+.cardContainer {
+  position: relative;
+  width: 100%; // Full width on mobile
+  height: auto; // Auto height for content
+  min-height: 120px; // Smaller minimum height on mobile
+  background: #FFFFFF;
+  border: 1px solid rgba(33, 63, 125, 0.06);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 15px; // Smaller padding on mobile
+  margin-bottom: 15px; // Add some spacing between cards when stacked
+  
+  @media (min-width: $breakpoint-sm) {
+    width: 100%;
+    padding: 18px 20px;
+  }
+  
+  @media (min-width: $breakpoint-md) {
+    width: 220px; // Slightly smaller on medium screens
+    min-height: 140px;
+    padding: 20px 25px;
+  }
+  
+  @media (min-width: $breakpoint-lg) {
+    width: 240px; // Original size on large screens
+    min-height: 160px;
+    padding: 20px 30px;
+  }
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.cardIcon {
+  margin-bottom: 10px;
+  width: 32px; // Smaller icon on mobile
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(223, 24, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  @media (min-width: $breakpoint-md) {
+    width: 36px; 
+    height: 36px;
+    margin-bottom: 12px;
+  }
+  
+  @media (min-width: $breakpoint-lg) {
+    width: 40px; // Original size on large screens
+    height: 40px;
+    margin-bottom: 14px;
+  }
+  
+  svg {
+    width: 18px; // Smaller icon size on mobile
+    height: 18px;
+    
+    @media (min-width: $breakpoint-md) {
+      width: 20px;
+      height: 20px;
+    }
+    
+    @media (min-width: $breakpoint-lg) {
+      width: 22px;
+      height: 22px;
+    }
+  }
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  
+  @media (min-width: $breakpoint-md) {
+    gap: 10px;
+  }
+  
+  @media (min-width: $breakpoint-lg) {
+    gap: 12px;
+  }
+  
+  h3 {
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px; // Smaller font on mobile
+    line-height: 14px;
+    text-transform: uppercase;
+    color: #545F7D;
+    margin: 0;
+    
+    @media (min-width: $breakpoint-md) {
+      font-size: 13px;
+      line-height: 15px;
+    }
+    
+    @media (min-width: $breakpoint-lg) {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+  
+  p {
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px; // Smaller font on mobile
+    line-height: 22px;
+    text-transform: uppercase;
+    color: #213F7D;
+    margin: 0;
+    
+    @media (min-width: $breakpoint-md) {
+      font-size: 21px;
+      line-height: 25px;
+    }
+    
+    @media (min-width: $breakpoint-lg) {
+      font-size: 24px;
+      line-height: 28px;
+    }
+  }
+}
+
+// Add a grid container for responsive layout of multiple cards
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr; // Single column on mobile
+  gap: 15px;
+  
+  @media (min-width: $breakpoint-sm) {
+    grid-template-columns: repeat(2, 1fr); // 2 columns on small screens
+    gap: 15px;
+  }
+  
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(3, 1fr); // 3 columns on medium screens
+    gap: 20px;
+  }
+  
+  @media (min-width: $breakpoint-lg) {
+    grid-template-columns: repeat(4, 1fr); // 4 columns on large screens
+    gap: 25px;
+  }
+}
