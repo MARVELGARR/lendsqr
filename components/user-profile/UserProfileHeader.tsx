@@ -5,6 +5,7 @@ import Image from "next/image"
 import { StarIcon, StarOutlineIcon, UserIcon } from "./icons"
 import styles from "./userProfileHeader.module.scss"
 import { useUserStore } from "../../store/userStore"
+import { tabsFont } from "../../styles/fonts"
 
 interface UserProfileHeaderProps {
   userId: string
@@ -68,7 +69,7 @@ const UserProfileHeader: React.FC<UserProfileHeaderProps> = ({ userId }) => {
         </div>
       </div>
 
-      <div className={styles.tabsContainer}>
+      <div style={tabsFont.style} className={styles.tabsContainer}>
         <div className={styles.tabs}>
           {tabs.map((tab) => (
             <button

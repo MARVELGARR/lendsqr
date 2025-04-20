@@ -15,7 +15,7 @@ export const Doc = Roboto({
   weight: ["400", "500", "600"],
 });
 
-export const tabs = Lato({
+export const tabsFont = Lato({
 weight: ["400"],
   fallback: ["Roboto", "Arial", "sans-serif"],
   subsets: ["latin"],

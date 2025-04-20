@@ -6,6 +6,7 @@ import Link from "next/link"
 import { BellIcon, SearchIcon, ChevronDownIcon } from "./icons"
 import styles from "./headerComponent.module.scss"
 import { IoIosNotificationsOutline } from "react-icons/io"
+import { Doc } from "../../styles/fonts"
 
 export default function HeaderComponent() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -48,7 +49,7 @@ export default function HeaderComponent() {
         </div>
 
         <div className={styles.navContainer}>
-          <Link href="/docs" className={styles.docsLink}>
+          <Link style={Doc.style} href="/docs" className={styles.docsLink}>
             Docs
           </Link>
 
