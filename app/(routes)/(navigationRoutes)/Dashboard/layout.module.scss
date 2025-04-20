@@ -1,0 +1,20 @@
+/* layout.module.scss */
+
+.layoutContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.layoutBody {
+    display: flex;
+    margin-top: 80px;
+    flex: 1;
+    overflow: hidden;
+}
+
+.layoutMain {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}

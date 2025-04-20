@@ -1,0 +1,96 @@
+@import './styles/variables.scss';
+
+.loginPage {
+  min-height: 100vh;
+  width: 100%;
+  background-color: $color-white;
+ 
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto;
+  height: 100vh;
+  
+  
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    padding: $spacing-xxl;
+  }
+}
+
+.leftSection {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-xl;
+  margin-top: $spacing-xxl;
+  
+  @media (max-width: $breakpoint-md) {
+    width: 100%;
+    padding: $spacing-lg $spacing-md;
+  }
+}
+
+.logoContainer {
+  margin-bottom: $spacing-xxl;
+  
+  @media (max-width: $breakpoint-md) {
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.illustrationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  
+  @media (max-width: $breakpoint-md) {
+    margin-bottom: $spacing-xl;
+    padding: $spacing-xxl;
+  }
+}
+
+.rightSection {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: $spacing-xl;
+  
+  @media (max-width: $breakpoint-md) {
+    width: 100%;
+    padding: $spacing-lg $spacing-md;
+  }
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 450px;
+  
+  @media (max-width: $breakpoint-md) {
+    max-width: 100%;
+  }
+}
+
+.welcomeHeading {
+  font-size: $font-size-xlarge;
+  font-weight: 700;
+  line-height: 1.2;
+  color: $color-secondary;
+  margin-bottom: $spacing-sm;
+}
+
+.welcomeSubtext {
+  font-size: $font-size-base;
+  font-weight: 400;
+  line-height: 1.5;
+  color: $color-text;
+  margin-bottom: $spacing-xl;
+}

@@ -1,0 +1,8 @@
+// Import base styles
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+@import 'base/reset';
+@import 'base/typography';
+
+// Import component styles
+// Note: Module styles are imported directly in their respective components

@@ -1,0 +1,78 @@
+// Flexbox mixins
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    flex-wrap: $wrap;
+  }
+  
+  // Media query mixins
+  @mixin respond-to($breakpoint) {
+    @if $breakpoint == sm {
+      @media (min-width: $breakpoint-sm) { @content; }
+    } @else if $breakpoint == md {
+      @media (min-width: $breakpoint-md) { @content; }
+    } @else if $breakpoint == lg {
+      @media (min-width: $breakpoint-lg) { @content; }
+    } @else if $breakpoint == xl {
+      @media (min-width: $breakpoint-xl) { @content; }
+    }
+  }
+  
+  // Typography mixins
+  @mixin heading-1 {
+    font-size: $font-size-xlarge;
+    font-weight: 700;
+    line-height: 1.2;
+    color: $color-secondary;
+  }
+  
+  @mixin body-text {
+    font-size: $font-size-base;
+    font-weight: 400;
+    line-height: 1.5;
+    color: $color-text;
+  }
+  
+  // Button mixins
+  @mixin button-primary {
+    background-color: $color-primary;
+    color: $color-white;
+    border: none;
+    border-radius: $border-radius-sm;
+    padding: $spacing-md $spacing-lg;
+    font-weight: 600;
+    cursor: pointer;
+    transition: $transition-base;
+    text-transform: uppercase;
+    
+    &:hover {
+      background-color: darken($color-primary, 10%);
+    }
+    
+    &:disabled {
+      background-color: lighten($color-primary, 20%);
+      cursor: not-allowed;
+    }
+  }
+  
+  // Input mixins
+  @mixin input-base {
+    width: 100%;
+    padding: $spacing-md;
+    border: 1px solid $color-border;
+    border-radius: $border-radius-sm;
+    font-size: $font-size-base;
+    transition: $transition-base;
+    
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+    }
+    
+    &::placeholder {
+      color: lighten($color-text, 20%);
+    }
+  }
+  
