@@ -65,9 +65,9 @@ export default function SidebarComponent() {
           {sidebarData.sections.map((section) => (
             <div key={section.title} className={styles.menuSection}>
               <h3 className={styles.sectionTitle}>{section.title}</h3>
-              <ul className={styles.menuList}>
+              <ul style={{display: "flex", flexDirection: "column", gap: "1rem"}} className={styles.menuList}>
                 {section.items.map((item) => (
-                  <li key={item.name}>
+                  <li  key={item.name}>
                     <Link
                       href={item.path}
                       className={`${styles.menuItem} ${activeItem === item.name ? styles.active : ""}`}

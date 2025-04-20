@@ -247,3 +247,39 @@ export const userData = [
     ],
   },
 ]
+import { v4 as uuidv4 } from 'uuid'; // For generating unique IDs
+
+import { userData as originalUsers } from './userData'; // Assuming your current data is in a separate file
+
+export function generateUsers(count = 500) {
+  const users = [];
+
+  for (let i = 0; i < count; i++) {
+    const base = originalUsers[i % originalUsers.length]; // Reuse original 5 users
+    const randomId = uuidv4();
+
+    const clonedUser = {
+      ...base,
+      id: (i + 1).toString(),
+      userId: `USR-${randomId.slice(0, 8)}`,
+      email: base.email.replace('@', `+${i}@`),
+      phoneNumber: '07' + Math.floor(100000000 + Math.random() * 900000000).toString(),
+      dateJoined: new Date(Date.now() - Math.floor(Math.random() * 1e10)).toLocaleString(),
+      accountBalance: (Math.random() * 500000).toFixed(2),
+      personalInfo: {
+        ...base.personalInfo,
+        email: base.personalInfo.email.replace('@', `+${i}@`),
+        phoneNumber: '08' + Math.floor(100000000 + Math.random() * 900000000).toString(),
+      },
+      bankInfo: {
+        ...base.bankInfo,
+        accountNumber: (Math.floor(1000000000 + Math.random() * 9000000000)).toString(),
+      },
+    };
+
+    users.push(clonedUser);
+  }
+
+  return users;
+}
+

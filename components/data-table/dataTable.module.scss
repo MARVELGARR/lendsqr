@@ -24,7 +24,9 @@ $breakpoint-xl: 1200px;
   border-radius: 4px;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.05);
   margin-bottom: 30px;
-  overflow: hidden;
+  margin-top: 3rem;
+  overflow: visible;
+  position: relative;
 }
 
 // Table header
@@ -53,6 +55,8 @@ $breakpoint-xl: 1200px;
 .tableWrapper {
   width: 100%;
   overflow-x: auto;
+  position: relative;
+  min-height: 300px;
 }
 
 .table {
@@ -134,6 +138,53 @@ $breakpoint-xl: 1200px;
 .actionsCell {
   display: flex;
   justify-content: center;
+}
+
+// Loading state
+.loadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba($color-secondary, 0.3);
+  border-radius: 50%;
+  border-top-color: $color-secondary;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.noData {
+  padding: 40px;
+  text-align: center;
+  color: $color-text;
+  font-size: 16px;
+}
+
+.errorMessage {
+  padding: 20px;
+  text-align: center;
+  color: $color-blacklisted;
+  background-color: rgba($color-blacklisted, 0.1);
+  border-radius: 4px;
+  margin: 20px 0;
 }
 
 // Pagination
@@ -226,4 +277,25 @@ $breakpoint-xl: 1200px;
 
 .ellipsis {
   color: $color-text;
+}
+
+// Mobile optimizations
+@media (max-width: $breakpoint-md) {
+  .tableWrapper {
+    margin: 0 -15px;
+  }
+  
+  .th, .td {
+    padding: 12px 15px;
+    font-size: 12px;
+  }
+  
+  .statusBadge {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+  
+  .columnHeader {
+    white-space: nowrap;
+  }
 }

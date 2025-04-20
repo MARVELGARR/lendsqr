@@ -1,6 +1,7 @@
 import React from "react"
 import "../styles/globals.scss"
 import type { Metadata } from "next"
+import { ReactQueryProvider } from "../providers/reactQueryProvider"
 
 export const metadata: Metadata = {
   title: "Lendsqr - Login",
@@ -14,7 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <ReactQueryProvider>
+
+        <body>{children}</body> 
+      </ReactQueryProvider>
     </html>
   )
 }
