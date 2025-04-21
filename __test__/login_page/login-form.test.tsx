@@ -1,7 +1,6 @@
 // login-form.test.tsx
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import LoginForm from '../../components/auth/login-form'
-import userEvent from "@testing-library/user-event"
 
 describe('LoginForm', () => {
   // ✅ 1. Renders the form
