@@ -1,27 +1,30 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { z } from "zod"
-import Link from "next/link"
-import styles from "./login-form.module.scss"
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import Link from "next/link";
+import styles from "./login-form.module.scss";
 
 // Define the validation schema with Zod
 const loginSchema = z.object({
-  email: z.string().min(1, { message: "Email is required" }).email({ message: "Please enter a valid email address" }),
+  email:  z
+  .string()
+  .min(1, { message: "Email is required" })
+  .email({ message: "Please enter a valid email address" }),
   password: z
     .string()
     .min(1, { message: "Password is required" })
     .min(8, { message: "Password must be at least 8 characters" }),
-})
+});
 
 // Infer the type from the schema
-export type LoginFormData = z.infer<typeof loginSchema>
+export type LoginFormData = z.infer<typeof loginSchema>;
 
 export default function LoginForm() {
-  const [showPassword, setShowPassword] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
     register,
@@ -33,37 +36,45 @@ export default function LoginForm() {
       email: "",
       password: "",
     },
-  })
+  });
 
   const onSubmit = async (data: LoginFormData) => {
-    setIsSubmitting(true)
+    setIsSubmitting(true);
     try {
       // Simulate API call
-      console.log("Form data submitted:", data)
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      console.log("Form data submitted:", data);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       // Handle successful login here
     } catch (error) {
-      console.error("Login error:", error)
+      console.error("Login error:", error);
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword)
-  }
+    setShowPassword(!showPassword);
+  };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)} data-testid="login-form">
+    <form
+      className={styles.form}
+      onSubmit={handleSubmit(onSubmit)}
+      data-testid="login-form"
+      noValidate
+    >
       <div className={styles.formGroup}>
         <div className={styles.inputWrapper}>
           <input
             type="email"
             id="email"
             placeholder="Email"
-            className={`${styles.input} ${errors.email ? styles.inputError : ""}`}
+            className={`${styles.input} ${
+              errors.email ? styles.inputError : ""
+            }`}
             {...register("email")}
             data-testid="email-input"
+            
           />
           {errors.email && (
             <span className={styles.errorMessage} data-testid="email-error">
@@ -80,7 +91,9 @@ export default function LoginForm() {
               type={showPassword ? "text" : "password"}
               id="password"
               placeholder="Password"
-              className={`${styles.input} ${errors.password ? styles.inputError : ""}`}
+              className={`${styles.input} ${
+                errors.password ? styles.inputError : ""
+              }`}
               {...register("password")}
               data-testid="password-input"
             />
@@ -107,9 +120,14 @@ export default function LoginForm() {
         </Link>
       </div>
 
-      <button type="submit" className={styles.loginButton} disabled={isSubmitting} data-testid="login-button">
+      <button
+        type="submit"
+        className={styles.loginButton}
+        disabled={isSubmitting}
+        data-testid="login-button"
+      >
         {isSubmitting ? "LOGGING IN..." : "LOG IN"}
       </button>
     </form>
-  )
+  );
 }
