@@ -31,7 +31,7 @@ export default function HeaderComponent() {
   }, [])
 
   return (
-    <header className={styles.header}>
+    <header data-testid="application-header" className={styles.header}>
       <div className={styles.container}>
         <div className={styles.logoContainer}>
           <Link href="/">
@@ -76,7 +76,7 @@ export default function HeaderComponent() {
                     <Link href="/settings">Settings</Link>
                   </li>
                   <li>
-                    <Link href="/logout">Logout</Link>
+                    <Link href="/login">Logout</Link>
                   </li>
                 </ul>
               </div>

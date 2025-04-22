@@ -1,4 +1,4 @@
-import { screen, fireEvent, render } from "@testing-library/react";
+import { screen, render } from "@testing-library/react";
 import LoginPage from "../../app/(routes)/(authRoutes)/login/page";
 
 

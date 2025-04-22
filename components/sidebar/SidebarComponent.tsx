@@ -1,31 +1,27 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { sidebarData } from "./sidebarData"
-import { ChevronDownIcon, LogoutIcon } from "./icons"
-import styles from "./sidebarComponent.module.scss"
+import { useState } from "react";
+import Link from "next/link";
+import { sidebarData } from "./sidebarData";
+import { ChevronDownIcon, LogoutIcon } from "./icons";
+import styles from "./sidebarComponent.module.scss";
 
 export default function SidebarComponent() {
-  const [isOpen, setIsOpen] = useState(true)
-  const [activeItem, setActiveItem] = useState("Users")
+  const [isOpen, setIsOpen] = useState(true);
+  const [activeItem, setActiveItem] = useState("Users");
 
   const toggleSidebar = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
 
   const handleItemClick = (itemName: string) => {
-    setActiveItem(itemName)
-  }
+    setActiveItem(itemName);
+  };
 
   return (
-    <>
+    <div data-testid='sidebar-component' className={styles.sidebarContainer}>
       {/* Mobile overlay */}
-      {isOpen && (
-  <div  className={styles.overlay} onClick={toggleSidebar}></div>
-)}
-
-    
+      {isOpen && <div className={styles.overlay} onClick={toggleSidebar}></div>}
 
       {/* Mobile toggle button */}
       <button
@@ -52,7 +48,9 @@ export default function SidebarComponent() {
           {/* Dashboard Link */}
           <Link
             href="/dashboard"
-            className={`${styles.menuItem} ${activeItem === "Dashboard" ? styles.active : ""}`}
+            className={`${styles.menuItem} ${
+              activeItem === "Dashboard" ? styles.active : ""
+            }`}
             onClick={() => handleItemClick("Dashboard")}
           >
             <div className={styles.menuIcon}>
@@ -65,12 +63,21 @@ export default function SidebarComponent() {
           {sidebarData.sections.map((section) => (
             <div key={section.title} className={styles.menuSection}>
               <h3 className={styles.sectionTitle}>{section.title}</h3>
-              <ul style={{display: "flex", flexDirection: "column", gap: "1rem"}} className={styles.menuList}>
+              <ul
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "1rem",
+                }}
+                className={styles.menuList}
+              >
                 {section.items.map((item) => (
-                  <li  key={item.name}>
+                  <li key={item.name}>
                     <Link
                       href={item.path}
-                      className={`${styles.menuItem} ${activeItem === item.name ? styles.active : ""}`}
+                      className={`${styles.menuItem} ${
+                        activeItem === item.name ? styles.active : ""
+                      }`}
                       onClick={() => handleItemClick(item.name)}
                     >
                       <div className={styles.menuIcon}>{item.icon}</div>
@@ -94,6 +101,6 @@ export default function SidebarComponent() {
           </div>
         </div>
       </aside>
-    </>
-  )
+    </div>
+  );
 }

@@ -16,7 +16,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <HeaderComponent />
       <div className={styles.layoutBody}>
         <SidebarComponent />
-        <main style={sidebarItems.style} className={styles.layoutMain}>{children}</main>
+        <main  style={sidebarItems.style} className={styles.layoutMain}>{children}</main>
       </div>
     </div>
   );
