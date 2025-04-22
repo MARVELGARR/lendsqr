@@ -39,6 +39,7 @@ describe('LoginForm', () => {
     })
   })
 
+
   // Negative test: invalid email format
   it('shows error for invalid email', async () => {
     render(<LoginForm />)
@@ -95,7 +96,7 @@ describe('LoginForm', () => {
     })
   })
 
-  // Toggle password visibility
+  // Toggle password visibility test
   it('toggles password visibility', () => {
     render(<LoginForm />)
 
