@@ -34,42 +34,42 @@ export const sidebarData = {
       items: [
         {
           name: "Users",
-          path: "/users",
+          path: "/Users",
           icon: <UsersIcon />,
         },
         {
           name: "Guarantors",
-          path: "/guarantors",
+          path: "/Guarantors",
           icon: <GuarantorsIcon />,
         },
         {
           name: "Loans",
-          path: "/loans",
+          path: "/Loans",
           icon: <LoansIcon />,
         },
         {
           name: "Decision Models",
-          path: "/decision-models",
+          path: "/Decision-models",
           icon: <DecisionModelsIcon />,
         },
         {
           name: "Savings",
-          path: "/savings",
+          path: "/Savings",
           icon: <SavingsIcon />,
         },
         {
           name: "Loan Requests",
-          path: "/loan-requests",
+          path: "/Loan-requests",
           icon: <LoanRequestsIcon />,
         },
         {
           name: "Whitelist",
-          path: "/whitelist",
+          path: "/Whitelist",
           icon: <WhitelistIcon />,
         },
         {
           name: "Karma",
-          path: "/karma",
+          path: "/Karma",
           icon: <KarmaIcon />,
         },
       ],
@@ -79,47 +79,47 @@ export const sidebarData = {
       items: [
         {
           name: "Organization",
-          path: "/organization",
+          path: "/BUSINESSES/Organization",
           icon: <OrganizationIcon />,
         },
         {
           name: "Loan Products",
-          path: "/loan-products",
+          path: "/BUSINESSES/loan-products",
           icon: <LoanProductsIcon />,
         },
         {
           name: "Savings Products",
-          path: "/savings-products",
+          path: "/BUSINESSES/Savings-products",
           icon: <SavingsProductsIcon />,
         },
         {
           name: "Fees and Charges",
-          path: "/fees-charges",
+          path: "/BUSINESSES/Fees-charges",
           icon: <FeesIcon />,
         },
         {
           name: "Transactions",
-          path: "/transactions",
+          path: "/BUSINESSES/Transactions",
           icon: <TransactionsIcon />,
         },
         {
           name: "Services",
-          path: "/services",
+          path: "/BUSINESSES/Services",
           icon: <ServicesIcon />,
         },
         {
           name: "Service Account",
-          path: "/service-account",
+          path: "/BUSINESSES/Service-account",
           icon: <ServiceAccountIcon />,
         },
         {
           name: "Settlements",
-          path: "/settlements",
+          path: "/BUSINESSES/Settlements",
           icon: <SettlementsIcon />,
         },
         {
           name: "Reports",
-          path: "/reports",
+          path: "/BUSINESSES/Reports",
           icon: <ReportsIcon />,
         },
       ],
@@ -129,22 +129,22 @@ export const sidebarData = {
       items: [
         {
           name: "Preferences",
-          path: "/preferences",
+          path: "/SETTINGS/preferences",
           icon: <PreferencesIcon />,
         },
         {
           name: "Fees and Pricing",
-          path: "/fees-pricing",
+          path: "/SETTINGS/fees-pricing",
           icon: <FeesAndPricingIcon />,
         },
         {
           name: "Audit Logs",
-          path: "/audit-logs",
+          path: "/SETTINGS/audit-logs",
           icon: <AuditLogsIcon />,
         },
         {
           name: "Systems Messages",
-          path: "/systems-messages",
+          path: "/SETTINGS/systems-messages",
           icon: <SystemsMessagesIcon />,
         },
       ],

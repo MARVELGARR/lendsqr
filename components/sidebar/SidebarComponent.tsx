@@ -21,7 +21,7 @@ export default function SidebarComponent() {
   return (
     <div data-testid='sidebar-component' className={styles.sidebarContainer}>
       {/* Mobile overlay */}
-      {isOpen && <div className={styles.overlay} onClick={toggleSidebar}></div>}
+      {isOpen && <div className={styles.overlay} data-testid="overlay" onClick={toggleSidebar}></div>}
 
       {/* Mobile toggle button */}
       <button
@@ -47,11 +47,14 @@ export default function SidebarComponent() {
 
           {/* Dashboard Link */}
           <Link
-            href="/dashboard"
+            href="/Dashboard"
+            data-testid="dashboard-link"
+            aria-label="Dashboard home button"
             className={`${styles.menuItem} ${
               activeItem === "Dashboard" ? styles.active : ""
             }`}
             onClick={() => handleItemClick("Dashboard")}
+
           >
             <div className={styles.menuIcon}>
               <sidebarData.icons.Dashboard />
@@ -61,7 +64,7 @@ export default function SidebarComponent() {
 
           {/* Menu Sections */}
           {sidebarData.sections.map((section) => (
-            <div key={section.title} className={styles.menuSection}>
+            <section key={section.title} className={styles.menuSection}>
               <h3 className={styles.sectionTitle}>{section.title}</h3>
               <ul
                 style={{
@@ -74,7 +77,8 @@ export default function SidebarComponent() {
                 {section.items.map((item) => (
                   <li key={item.name}>
                     <Link
-                      href={item.path}
+                     data-testid="sidebar-item"
+                      href={`/Dashboard${item.path}`}
                       className={`${styles.menuItem} ${
                         activeItem === item.name ? styles.active : ""
                       }`}
@@ -86,10 +90,10 @@ export default function SidebarComponent() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </section>
           ))}
 
-          {/* Logout */}
+          {/* Logout section */}
           <div className={styles.sidebarFooter}>
             <Link href="/login" className={styles.logoutButton}>
               <div className={styles.menuIcon}>

@@ -1,0 +1,44 @@
+// dashboardCard.module.scss
+
+// Define breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+
+.comingSoonContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%; // Full width on mobile
+    height: 100vh; // Auto height for content
+    min-height: 120px; // Smaller minimum height on mobile
+    background: #ffffff;
+    border: 1px solid rgba(33, 63, 125, 0.06);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 15px; // Smaller padding on mobile
+    margin-bottom: 15px; // Add some spacing between cards when stacked
+    .loader {
+        animation: spin 1s linear infinite;
+        width: 50px;
+        height: 50px;
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @media (min-width: $breakpoint-sm) {
+        width: 100%;
+        padding: 18px 20px;
+    }
+}
