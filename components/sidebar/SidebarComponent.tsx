@@ -94,8 +94,8 @@ export default function SidebarComponent() {
           ))}
 
           {/* Logout section */}
-          <div className={styles.sidebarFooter}>
-            <Link href="/login" className={styles.logoutButton}>
+          <div  className={styles.sidebarFooter}>
+            <Link data-testid='logout' href="/login" className={styles.logoutButton}>
               <div className={styles.menuIcon}>
                 <LogoutIcon />
               </div>

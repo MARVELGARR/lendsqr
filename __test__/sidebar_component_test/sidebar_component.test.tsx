@@ -62,6 +62,30 @@ describe("SidebarComponent", () => {
         expect(dashboardLink).toHaveClass("menuItem active")
         
         
+    })
+
+    it("test to see that the active class was removed from the items it was in before", ()=>{
+        render(<SidebarComponent/>)
+
+        const dashboardLink = screen.getByTestId("dashboard-link")
+        fireEvent.click(dashboardLink)
+        const menuItems = screen.getAllByTestId("sidebar-item")
+        expect(dashboardLink).toHaveClass("menuItem active")
+        menuItems.forEach((item) => {
+            if (item !== dashboardLink) {
+              expect(item).not.toHaveClass("menuItem active");
+            }
+          });
+
+    })
+
+    it("contains a logout link", () => {
+        render(<SidebarComponent />)
+        const logoutLink = screen.getByTestId("logout")
+        expect(logoutLink).toBeInTheDocument()
+        expect(logoutLink).toHaveAttribute("href", "/login")
       })
+      
+
 
 })

@@ -13,7 +13,7 @@ interface StatCardGridProps {
 
 const StatCardGrid: React.FC<StatCardGridProps> = ({ stats, className }) => {
   return (
-    <div className={`${styles.grid} ${className || ""}`}>
+    <div  className={`${styles.grid} ${className || ""}`}>
       {stats.map((stat, index) => (
         <div key={index} className={styles.gridItem}>
           <StatCard type={stat.type} value={stat.value} />
