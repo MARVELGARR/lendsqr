@@ -235,9 +235,4 @@ $breakpoint-xl: 1200px;
 }
 
 
-// Layout adjustments for when sidebar is open
-body {
-  @media (min-width: $breakpoint-md) {
-    padding-left: 260px;
-  }
-}
+
