@@ -45,12 +45,23 @@ export default function DataTable() {
 
   // Derive query parameters from state
   const queryParams = useMemo(() => {
+    // Only include non-empty filter values
+    const nonEmptyFilters = Object.entries(filters).reduce(
+      (acc, [key, value]) => {
+        if (value && String(value).trim() !== "") {
+          acc[key] = value
+        }
+        return acc
+      },
+      {} as Record<string, any>,
+    )
+
     return {
       page: pagination.pageIndex,
       pageSize: pagination.pageSize,
       sortBy: sorting.length > 0 ? sorting[0].id : undefined,
-      sortOrder: sorting.length > 0 ? (sorting[0].desc ? "desc" : "asc") as "desc" | "asc" : undefined,
-      filters: Object.keys(filters).length > 0 ? filters : undefined,
+      sortOrder: sorting.length > 0 ? ((sorting[0].desc ? "desc" : "asc") as "desc" | "asc") : undefined,
+      filters: Object.keys(nonEmptyFilters).length > 0 ? nonEmptyFilters : undefined,
     }
   }, [pagination, sorting, filters])
 
@@ -174,7 +185,7 @@ export default function DataTable() {
   return (
     <div className={styles.tableContainer}>
       <div className={styles.tableHeader}>
-        <button className={styles.filterButton} onClick={toggleFilter}>
+        <button data-testid="filterButton" className={styles.filterButton} onClick={toggleFilter}>
           Filter
         </button>
         {isFilterOpen && <FilterForm onSubmit={handleFilterSubmit} onClose={() => setIsFilterOpen(false)} />}

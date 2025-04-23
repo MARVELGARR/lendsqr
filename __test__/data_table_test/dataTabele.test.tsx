@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react"
+import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 
 import useGetUserDataHook from "../../hooks/getUsersDataHook"
 import DataTable from "../../components/data-table/DataTable"
@@ -67,7 +67,7 @@ describe("DataTable", () => {
     const filterButton = screen.getByText(/filter/i)
     fireEvent.click(filterButton)
 
-    expect(screen.getByText(/submit/i)).toBeInTheDocument()
+    expect(screen.getByTestId("filterButton")).toBeInTheDocument()
   })
 
   it("shows loading state", () => {
@@ -98,4 +98,91 @@ describe("DataTable", () => {
     expect(screen.getByText(/error loading data/i)).toBeInTheDocument()
     expect(screen.getByText(/network error/i)).toBeInTheDocument()
   })
+
+
+  it("shows filter form with all fields when filter button is clicked", () => {
+    render(<DataTable />)
+  
+    fireEvent.click(screen.getByRole("button", { name: /filter/i }))
+  
+    expect(screen.getByLabelText(/organization/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/username/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/email/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/phone number/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/date/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/status/i)).toBeInTheDocument()
+  })
+
+  it("displays validation errors when invalid email and phone number are entered", async () => {
+    render(<DataTable />)
+  
+    fireEvent.click(screen.getByRole("button", { name: /filter/i }))
+  
+    fireEvent.change(screen.getByLabelText(/email/i), { target: { value: "invalid-email" } })
+    fireEvent.change(screen.getByLabelText(/phone number/i), { target: { value: "not-a-number" } })
+  
+    fireEvent.click(screen.getByTestId("submit"))
+  
+    expect(await screen.findByText(/please enter a valid email/i)).toBeInTheDocument()
+    expect(await screen.findByText(/please enter a valid phone number/i)).toBeInTheDocument()
+  })
+
+  it("clears form on reset and submits empty values", () => {
+    render(<DataTable />)
+  
+    fireEvent.click(screen.getByRole("button", { name: /filter/i }))
+  
+    const usernameInput = screen.getByLabelText(/username/i)
+    fireEvent.change(usernameInput, { target: { value: "johndoe" } })
+  
+    expect(usernameInput).toHaveValue("johndoe") // confirm it's filled
+  
+    const resetButton = screen.getByRole("button", { name: /reset/i })
+    fireEvent.click(resetButton)
+  
+    // The form will disappear, so i checked immediately:
+    expect(usernameInput).toHaveValue("") // ✅ input was cleared before it closed
+  })
+  it("submits valid filter form data", () => {
+    render(<DataTable />)
+  
+    fireEvent.click(screen.getByRole("button", { name: /filter/i }))
+  
+    fireEvent.change(screen.getByLabelText(/username/i), { target: { value: "john" } })
+    fireEvent.change(screen.getByLabelText(/email/i), { target: { value: "john@example.com" } })
+    fireEvent.change(screen.getByLabelText(/phone number/i), { target: { value: "+1234567890" } })
+    fireEvent.change(screen.getByLabelText(/status/i), { target: { value: "Active" } })
+  
+    fireEvent.click(screen.getByTestId("submit"))
+  
+    //check if the table updates or just make sure form submitted without error
+    expect(screen.queryByText(/please enter a valid/i)).not.toBeInTheDocument()
+  })
+
+  //Negative
+  it("shows error message for invalid email", async () => {
+    render(<DataTable />)
+  
+    fireEvent.click(screen.getByRole("button", { name: /filter/i }))
+    fireEvent.change(screen.getByLabelText(/email/i), { target: { value: "bademail" } })
+    fireEvent.click(screen.getByTestId("submit"))
+  
+    await waitFor(() =>
+      expect(screen.getByText(/valid email/i)).toBeInTheDocument()
+    )
+  })
+  //negative
+  it("shows error message for invalid phonenumber", async () => {
+    render(<DataTable />)
+  
+    fireEvent.click(screen.getByRole("button", { name: /filter/i }))
+    fireEvent.change(screen.getByLabelText(/phone number/i), { target: { value: "123" } })
+    fireEvent.click(screen.getByTestId("submit"))
+  
+    await waitFor(() =>
+      expect(screen.getByText(/valid phone number/i)).toBeInTheDocument()
+    )
+  })
+  
+  
 })
