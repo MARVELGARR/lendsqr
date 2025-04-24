@@ -8,17 +8,15 @@ $breakpoint-xl: 1200px;
     display: flex;
     flex-direction: column;
     height: 100vh;
+
+    
+        @media (min-width: $breakpoint-md) {
+          padding-left: 260px;
+        }
+      
+      
 }
-:global(body) {
-    width: 100%;
-  }
-  
-  @media (min-width: 768px) {
-    :global(body) {
-      padding-left: 260px;
-    }
-  }
-   
+
 .layoutBody {
     display: flex;
     margin-top: 80px;
