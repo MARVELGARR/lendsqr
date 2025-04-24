@@ -9,13 +9,16 @@ $breakpoint-xl: 1200px;
     flex-direction: column;
     height: 100vh;
 }
-body{
+:global(body) {
     width: 100%;
-    @media (min-width: $breakpoint-md) {
+  }
+  
+  @media (min-width: 768px) {
+    :global(body) {
       padding-left: 260px;
     }
   }
-  
+   
 .layoutBody {
     display: flex;
     margin-top: 80px;
