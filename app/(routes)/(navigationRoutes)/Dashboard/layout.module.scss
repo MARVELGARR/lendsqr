@@ -1,11 +1,20 @@
 /* layout.module.scss */
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
 
 .layoutContainer {
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
-
+body{
+    @media (min-width: $breakpoint-md) {
+      padding-left: 260px;
+    }
+  }
+  
 .layoutBody {
     display: flex;
     margin-top: 80px;
