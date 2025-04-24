@@ -8,7 +8,7 @@ import styles from "./sidebarComponent.module.scss";
 
 export default function SidebarComponent() {
   const [isOpen, setIsOpen] = useState(true);
-  const [activeItem, setActiveItem] = useState("Users");
+  const [activeItem, setActiveItem] = useState("Dashboard");
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
