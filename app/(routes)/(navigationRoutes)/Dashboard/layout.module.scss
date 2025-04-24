@@ -10,6 +10,7 @@ $breakpoint-xl: 1200px;
     height: 100vh;
 }
 body{
+    width: 100%;
     @media (min-width: $breakpoint-md) {
       padding-left: 260px;
     }

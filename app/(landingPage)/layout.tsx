@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <div style={{width: "100%"}}>
+    <div>
 
 
         {children}
