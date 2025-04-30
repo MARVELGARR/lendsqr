@@ -63,7 +63,7 @@ const fetchUsers = async ({ page, pageSize, sortBy, sortOrder, filters }: UsersQ
     if (cachedData) {
       allUsers = JSON.parse(cachedData)
     } else {
-      const res = await fetch(`https://run.mocky.io/v3/8e4afc30-0124-4551-a229-1eed875ca708`, {
+      const res = await fetch(`https://run.mocky.io/v3/454f19ea-a684-4b15-867b-b9dc46675d57`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
